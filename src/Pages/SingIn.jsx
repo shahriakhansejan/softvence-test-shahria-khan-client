@@ -1,6 +1,6 @@
 import img from "../assets/image/login.png";
 import bgImg from "../assets/image/bg.png";
-import { Link } from "react-router";
+import { Link, Navigate } from "react-router";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -34,6 +34,9 @@ const SingIn = () => {
           timer: 1500,
         });
       }
+
+      
+
     }, [isSuccess]);
 
   return (

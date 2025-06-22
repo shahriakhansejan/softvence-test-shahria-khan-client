@@ -121,7 +121,7 @@ const TaskDetails = () => {
 
       {/* modal Edit */}
       <dialog id={id} className="modal">
-        <EditTask task={task} />
+        <EditTask task={task?.result} />
       </dialog>
 
       {/* details */}
@@ -131,10 +131,10 @@ const TaskDetails = () => {
 
           <div className="w-full">
             <h1 className="font-semibold text-2xl sm:text-[31px] text-[#161616]">
-              {task?.name}
+              {task?.result?.name}
             </h1>
             <p className="text-base sm:text-lg text-justify font-normal text-[#667085] mt-2 sm:mt-0">
-              {task?.des}
+              {task?.result?.des}
             </p>
             <div className="py-8 sm:py-16 flex flex-col sm:flex-row gap-6 sm:gap-11">
               <div className="border-b sm:border-b-0 sm:border-r border-gray-300 pb-6 sm:pb-0 sm:pr-6 md:pr-14">
@@ -143,25 +143,25 @@ const TaskDetails = () => {
                 </h2>
                 <p className="flex text-[#1F1F1F] items-center gap-3 text-lg sm:text-[21px] mt-3 sm:mt-[18px] font-normal">
                   <MdEditCalendar />{" "}
-                  {moment(task?.end).format("dddd, MMMM D - YYYY")}
+                  {moment(task?.result?.end).format("dddd, MMMM D - YYYY")}
                 </p>
               </div>
               <p
                 className={`flex items-center gap-3 text-xl sm:text-2xl md:text-[32px] font-medium ${
-                  task?.status === "InProgress"
+                  task?.result?.status === "InProgress"
                     ? "text-[#DD9221]"
-                    : task?.status === "Done"
+                    : task.result?.status === "Done"
                     ? "text-[#21D789]"
-                    : task?.status === "Pending"
+                    : task.result?.status === "Pending"
                     ? "text-[#E343E6]"
-                    : task?.status === "Ongoing"
+                    : task.result?.status === "Ongoing"
                     ? "text-[#1E90FF]"
-                    : task?.status === "Collaborative Task"
+                    : task.result?.status === "Collaborative Task"
                     ? "text-[#FF7F50]"
                     : "text-gray-400"
                 }`}
               >
-                <GoDotFill /> {task?.status}
+                <GoDotFill /> {task?.result?.status}
               </p>
             </div>
             <div className="text-[#1F1F1F]">
@@ -169,7 +169,7 @@ const TaskDetails = () => {
               <Select
                 value={selectedStatus}
                 onChange={handleChange}
-                placeholder={task?.status}
+                placeholder={task?.result?.status}
                 className="w-full sm:w-64"
               >
                 {statusOptions.map((status) => (

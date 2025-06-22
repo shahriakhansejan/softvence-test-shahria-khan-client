@@ -13,30 +13,34 @@ const taskApi = baseApi.injectEndpoints({
           .filter(Boolean)
           .join("&");
 
-        return `/tasks?${queryString}`;
+        return `/task?${queryString}`;
       },
       providesTags: ["Task"],
     }),
+
     getATask: builder.query({
       query: (id) => `/task/${id}`,
       providesTags: ["Task"],
     }),
+
     updateTaskStatus: builder.mutation({
       query: ({ id, status }) => ({
         url: `/task/${id}`,
-        method: "PATCH",
+        method: "PUT",
         body: { status },
       }),
       invalidatesTags: ["Task"],
     }),
+
     updateTask: builder.mutation({
       query: ({ id, data }) => ({
-        url: `/tasks/${id}`,
+        url: `/task/${id}`,
         method: "PATCH",
         body: data,
       }),
       invalidatesTags: ["Task"],
     }),
+
     deleteTask: builder.mutation({
       query: (id) => ({
         url: `/task/${id}`,
@@ -44,6 +48,7 @@ const taskApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["Task"],
     }),
+
     addTask: builder.mutation({
       query: (taskData) => ({
         url: "/task",

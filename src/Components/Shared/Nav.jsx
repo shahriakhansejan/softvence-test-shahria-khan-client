@@ -7,8 +7,10 @@ import { PiSpinnerBall } from "react-icons/pi";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
 import { NavLink } from "react-router";
+import { useLogoutUserMutation } from "../../redux/feature/user/userApi";
 
 const Nav = () => {
+  const [logoutUser] = useLogoutUserMutation();
   return (
     <nav className="">
       <div className="relative h-[174px] bg-[#040612] overflow-hidden">
@@ -73,12 +75,7 @@ const Nav = () => {
               tabIndex={0}
               className="dropdown-content menu rounded-box z-1 w-36 bg-white/25 p-2 shadow-sm"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
+              <button onClick={()=>logoutUser()}>Log Out</button>
             </ul>
           </div>
         </div>

@@ -56,9 +56,9 @@ const TaskCard = ({ selectedItems, selectedCategory }) => {
 
   return (
     <div>
-      {tasks ? (
+      {tasks?.result ? (
         <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-          {tasks?.map((task) => (
+          {tasks?.result?.map((task) => (
             <div
               key={task._id}
               className="border border-gray-300 p-5 shadow rounded"

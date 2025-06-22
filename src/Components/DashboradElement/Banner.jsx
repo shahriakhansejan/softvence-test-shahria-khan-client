@@ -7,8 +7,10 @@ import { NavLink } from "react-router";
 import leftImg from "../../assets/image/left.png";
 import rightImg from "../../assets/image/right.png";
 import dashImg from "../../assets/image/dash.png";
+import { useLogoutUserMutation } from "../../redux/feature/user/userApi";
 
 const Banner = () => {
+  const [logoutUser] = useLogoutUserMutation();
   return (
     <div className="relative h-[306px] bg-[#040612] overflow-hidden">
       {/* Background Images - Made responsive */}
@@ -81,12 +83,7 @@ const Banner = () => {
               tabIndex={0}
               className="dropdown-content menu rounded-box z-1 w-36 bg-white/25 p-2 shadow-sm"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Item 2</a>
-              </li>
+              <button onClick={()=>logoutUser()}>Log OUt</button>
             </ul>
           </div>
         </div>
