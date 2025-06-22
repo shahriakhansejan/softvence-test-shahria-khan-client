@@ -25,7 +25,30 @@ const taskApi = baseApi.injectEndpoints({
       query: ({ id, status }) => ({
         url: `/task/${id}`,
         method: "PATCH",
-        body: { status } ,
+        body: { status },
+      }),
+      invalidatesTags: ["Task"],
+    }),
+    updateTask: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/tasks/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Task"],
+    }),
+    deleteTask: builder.mutation({
+      query: (id) => ({
+        url: `/task/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Task"],
+    }),
+    addTask: builder.mutation({
+      query: (taskData) => ({
+        url: "/task",
+        method: "POST",
+        body: taskData,
       }),
       invalidatesTags: ["Task"],
     }),
@@ -35,5 +58,8 @@ const taskApi = baseApi.injectEndpoints({
 export const {
   useGetTaskQuery,
   useGetATaskQuery,
+  useUpdateTaskMutation,
   useUpdateTaskStatusMutation,
+  useDeleteTaskMutation,
+  useAddTaskMutation,
 } = taskApi;
